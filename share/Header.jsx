@@ -2,30 +2,35 @@ import React, { Component } from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { Header } from "react-native-elements";
 
-const Button = ({ title }) => {
+const Button = ({ title, action}) => {
   return (
     <Pressable
       style={({ pressed }) => [
         {
           backgroundColor: pressed ? "#ffa9ee" : "#f977bc",
           borderColor: "#c3458c",
-          borderWidth: 1,
+          borderWidth: 2,
           flexDirection: "row",
-        }
+          margin: -1,
+        },
       ]}
+      onPress={action}
     >
-      <View
-        style={ styles.buttonCircle }
-      />
+      <View style={styles.buttonCircle} />
       <Text style={styles.buttonText}>{title}</Text>
     </Pressable>
   );
 };
 
-const Options = () => {
+const Options = ({ history }) => {
   return (
-    <View style={{ margin: -1 }}>
-      <Button title={"Inicio"} />
+    <View>
+      <Button
+        title={"Inicio"}
+        action={() => {
+          history.push("/");
+        }}
+      />
       <Button title={"Redes Sociales"} />
       <Button title={"Acerca de la Aplicación"} />
     </View>
@@ -39,7 +44,7 @@ export default class CustomHeader extends Component {
   }
   render() {
     return (
-      <View>
+      <View style={{ position: "absolute" }}>
         <Header
           rightComponent={{
             icon: "menu",
@@ -49,7 +54,10 @@ export default class CustomHeader extends Component {
           backgroundColor={"#ea1789"}
           statusBarProps={{ backgroundColor: "#b2005c" }}
         />
-        <View>{this.state.expanded ? <Options /> : null}</View>
+
+        <View>
+          {this.state.expanded ? <Options history={this.props.history} /> : null}
+        </View>
       </View>
     );
   }
@@ -57,8 +65,6 @@ export default class CustomHeader extends Component {
   iconAction = () => {
     this.setState({ expanded: !this.state.expanded });
   };
-
-  
 }
 
 const styles = StyleSheet.create({
@@ -70,5 +76,5 @@ const styles = StyleSheet.create({
     marginLeft: "10%",
     marginTop: "2.5%",
   },
-  buttonText: { fontSize: 18, paddingLeft: "2%" }
+  buttonText: { fontSize: 18, paddingLeft: "2%" },
 });
