@@ -3,6 +3,12 @@ import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import Header from "../share/Header";
 import { Button } from "../share/Button";
 import { Icon, Overlay } from "react-native-elements";
+import {
+  OverlayDiscord,
+  OverlayClass,
+  OverlayPodcast,
+  OverlayInterview,
+} from "../share/Overlays.jsx";
 
 const style = StyleSheet.create({
   container: { flex: 1 },
@@ -34,9 +40,12 @@ const style = StyleSheet.create({
   },
 });
 
-const Element = ({ color, name, text }) => {
+const Element = ({ color, name, text, action }) => {
   return (
-    <TouchableOpacity style={[style.element, { backgroundColor: color }]}>
+    <TouchableOpacity
+      style={[style.element, { backgroundColor: color }]}
+      onPress={action}
+    >
       <Icon name={name} type="font-awesome-5" size={50} />
       <Text>{text}</Text>
     </TouchableOpacity>
@@ -44,10 +53,22 @@ const Element = ({ color, name, text }) => {
 };
 
 export default function Community({ history }) {
-  const [visible, setVisible] = useState(false);
+  const [visibleDiscord, setVisibleDiscord] = useState(false);
+  const [visiblePodcast, setVisiblePodcast] = useState(false);
+  const [visibleClass, setVisibleClass] = useState(false);
+  const [visibleInterview, setVisibleInterview] = useState(false);
 
-  const toggleOverlay = () => {
-    setVisible(!visible);
+  const toggleOverlayDiscord = () => {
+    setVisibleDiscord(!visibleDiscord);
+  };
+  const toggleOverlayPodcast = () => {
+    setVisiblePodcast(!visiblePodcast);
+  };
+  const toggleOverlayClass = () => {
+    setVisibleClass(!visibleClass);
+  };
+  const toggleOverlayInterview = () => {
+    setVisibleInterview(!visibleInterview);
   };
   return (
     <View style={style.container}>
@@ -58,13 +79,33 @@ export default function Community({ history }) {
         </Text>
         <View style={style.table}>
           <View style={[style.row]}>
-            <Element color="#f977bc" name="discord" text="Discord" />
-            <Element color="#ffa9ee" name="microphone-alt" text="Podcast" />
+            <Element
+              color="#f977bc"
+              name="discord"
+              text="Discord"
+              action={toggleOverlayDiscord}
+            />
+            <Element
+              color="#ffa9ee"
+              name="microphone-alt"
+              text="Podcast"
+              action={toggleOverlayPodcast}
+            />
           </View>
 
           <View style={[style.row]}>
-            <Element color="#ffa9ee" name="chalkboard-teacher" text="Clases" />
-            <Element color="#f977bc" name="user-friends" text="Entrevistas" />
+            <Element
+              color="#ffa9ee"
+              name="chalkboard-teacher"
+              text="Clases"
+              action={toggleOverlayClass}
+            />
+            <Element
+              color="#f977bc"
+              name="user-friends"
+              text="Entrevistas"
+              action={toggleOverlayInterview}
+            />
           </View>
         </View>
         <Button
@@ -77,6 +118,13 @@ export default function Community({ history }) {
         />
       </View>
       <Header history={history} />
+      <OverlayDiscord visible={visibleDiscord} action={toggleOverlayDiscord} />
+      <OverlayInterview
+        visible={visibleInterview}
+        action={toggleOverlayInterview}
+      />
+      <OverlayClass visible={visibleClass} action={toggleOverlayClass} />
+      <OverlayPodcast visible={visiblePodcast} action={toggleOverlayPodcast} />
     </View>
   );
 }
