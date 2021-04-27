@@ -24,7 +24,7 @@ const Button = ({ title, action}) => {
 
 const Options = ({ history }) => {
   return (
-    <View>
+    <View style={{position: "absolute", zIndex: 1, width: "100%"}}>
       <Button
         title={"Inicio"}
         action={() => {
@@ -44,7 +44,7 @@ export default class CustomHeader extends Component {
   }
   render() {
     return (
-      <View style={{ position: "absolute" }}>
+      <View style={{ position: "relative" }}>
         <Header
           rightComponent={{
             icon: "menu",

@@ -4,31 +4,40 @@ import Header from "../share/Header";
 import { Button } from "../share/Button";
 
 const style = StyleSheet.create({
-  container: { flex: 1 },
-  subContainer: {
-    flex: 1,
+  container: { flex: 1, alignItems: "center", backgroundColor: "#282828" },
+  centerContent: {
+    alignSelf: "stretch",
     alignItems: "center",
-    justifyContent: "space-evenly",
+    justifyContent: "center",
   },
-  title: { marginTop: "10%", color: "#fff", fontSize: 45 },
-  logo: { height: "22%", width: "85%", marginTop: "-5%" },
+  titleContainer: { flex: 1},
+  title: { color: "#fff", fontSize: 45},
+  logoContainer: { flex: 1,  },
+  logo: { height: "100%", width: "70%", marginBottom: "15%"},
+  textContainer: { flex: 1, padding: 10 },
   text: {
     color: "#fff",
     textAlign: "center",
     fontSize: 14,
     fontWeight: "bold",
   },
+  buttonContainer: { flex: 2, marginTop: "5%" },
 });
 
 export default function Community({ history }) {
   return (
     <View style={style.container}>
-      <View style={style.subContainer}>
+      <Header history={history} />
+      <View style={[style.titleContainer, style.centerContent]}>
         <Text style={style.title}>Comunidad</Text>
+      </View>
+      <View style={[style.titleContainer, style.centerContent]}>
         <Image
           source={require("../assets/GentlemanProgrammingLogo.png")}
           style={style.logo}
         />
+      </View>
+      <View style={[style.textContainer, style.centerContent]}>
         <Text style={style.text}>
           {"Bienvenido a Gentleman Programming !!!\n\n"}
           {
@@ -38,6 +47,8 @@ export default function Community({ history }) {
             "Primero lo primero... No tengas miedo de preguntar y sé la esponja de conocimiento que tienes que ser !!!!"
           }
         </Text>
+      </View>
+      <View style={[style.buttonContainer,style.centerContent]}>
         <Button
           color={"#f977bc"}
           text={"Conocimiento"}
@@ -63,7 +74,6 @@ export default function Community({ history }) {
           }}
         />
       </View>
-      <Header history={history} />
     </View>
   );
 }

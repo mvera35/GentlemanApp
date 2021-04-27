@@ -4,14 +4,19 @@ import { Icon } from "react-native-elements";
 
 export const Button = ({ color, text, icon, action }) => {
   const styles = StyleSheet.create({
+    centerContent: {
+      flex: 1,
+      alignSelf: "stretch",
+      alignItems: "center",
+      justifyContent: "flex-start",
+    },
     appButtonContainer: {
       backgroundColor: color,
       borderRadius: 100,
-      height: "10%",
-      width: "60%",
-      flexDirection: "row",
       justifyContent: "center",
       alignItems: "center",
+      width: "55%",
+      height: 60,
     },
     appButtonText: {
       fontSize: 20,
@@ -21,13 +26,19 @@ export const Button = ({ color, text, icon, action }) => {
   });
 
   return (
-    <TouchableOpacity style={styles.appButtonContainer} onPress={action}>
-      <Icon
-        name={icon}
-        type="ionicon"
-        size={40}
-      />
-      <Text style={styles.appButtonText}>{text}</Text>
-    </TouchableOpacity>
+    <View style={styles.centerContent}>
+      <TouchableOpacity style={styles.appButtonContainer} onPress={action}>
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Icon name={icon} type="ionicon" size={40} />
+          <Text style={styles.appButtonText}>{text}</Text>
+        </View>
+      </TouchableOpacity>
+    </View>
   );
 };

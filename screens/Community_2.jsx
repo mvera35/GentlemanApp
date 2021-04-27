@@ -11,11 +11,10 @@ import {
 } from "../share/Overlays.jsx";
 
 const style = StyleSheet.create({
-  container: { flex: 1 },
-  subContainer: {
-    flex: 1,
+  container: { flex: 1, backgroundColor: "#282828" },
+  centerContain: {
     alignItems: "center",
-    justifyContent: "space-around",
+    justifyContent: "center",
   },
   text: {
     color: "#fff",
@@ -32,12 +31,15 @@ const style = StyleSheet.create({
   row: { flexDirection: "row" },
   element: {
     borderWidth: 4,
-    height: 140,
-    width: 140,
+    height: 160,
+    width: 160,
     borderColor: "#c3458c",
     justifyContent: "center",
     alignItems: "center",
   },
+  textContainer: { flex: 0.5 },
+  tableContainer: { flex: 2 },
+  buttonContainer: { flex: 0.5 },
 });
 
 const Element = ({ color, name, text, action }) => {
@@ -72,42 +74,45 @@ export default function Community({ history }) {
   };
   return (
     <View style={style.container}>
-      <View style={style.subContainer}>
+      <Header history={history} />
+      <View style={[style.textContainer, style.centerContain]}>
         <Text style={style.text}>
           Todos son bienvenidos dentro de esta comunidad, dentro de la misma
           encontraras lo siguiente:
         </Text>
-        <View style={style.table}>
-          <View style={[style.row]}>
-            <Element
-              color="#f977bc"
-              name="discord"
-              text="Discord"
-              action={toggleOverlayDiscord}
-            />
-            <Element
-              color="#ffa9ee"
-              name="microphone-alt"
-              text="Podcast"
-              action={toggleOverlayPodcast}
-            />
-          </View>
-
-          <View style={[style.row]}>
-            <Element
-              color="#ffa9ee"
-              name="chalkboard-teacher"
-              text="Clases"
-              action={toggleOverlayClass}
-            />
-            <Element
-              color="#f977bc"
-              name="user-friends"
-              text="Entrevistas"
-              action={toggleOverlayInterview}
-            />
-          </View>
+      </View>
+      <View style={[style.tableContainer, style.centerContain]}>
+        <View style={[style.row]}>
+          <Element
+            color="#f977bc"
+            name="discord"
+            text="Discord"
+            action={toggleOverlayDiscord}
+          />
+          <Element
+            color="#ffa9ee"
+            name="microphone-alt"
+            text="Podcast"
+            action={toggleOverlayPodcast}
+          />
         </View>
+
+        <View style={[style.row]}>
+          <Element
+            color="#ffa9ee"
+            name="chalkboard-teacher"
+            text="Clases"
+            action={toggleOverlayClass}
+          />
+          <Element
+            color="#f977bc"
+            name="user-friends"
+            text="Entrevistas"
+            action={toggleOverlayInterview}
+          />
+        </View>
+      </View>
+      <View style={[style.buttonContainer]}>
         <Button
           color={"#c3458c"}
           text={"Regresar"}
@@ -117,7 +122,6 @@ export default function Community({ history }) {
           }}
         />
       </View>
-      <Header history={history} />
       <OverlayDiscord visible={visibleDiscord} action={toggleOverlayDiscord} />
       <OverlayInterview
         visible={visibleInterview}
