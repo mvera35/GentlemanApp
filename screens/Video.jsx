@@ -33,6 +33,7 @@ const style = StyleSheet.create({
   },
   videoContainer: { flex: 1 },
   buttonContainer: { flex: 0.3 },
+  barContainer: { flex: 0.3,zIndex: 1  },
 });
 export default function Community({ history }) {
   return (
@@ -41,7 +42,9 @@ export default function Community({ history }) {
       <View style={[style.titleContainer, style.centerContain]}>
         <Text style={[style.title]}>Videos</Text>
       </View>
-      <SearchBar history={history}/>
+      <View style={[style.barContainer]}>
+        <SearchBar history={history} />
+      </View>
       <View style={[style.videoContainer]}>
         <Text style={[style.text]}>Último Video</Text>
         <Image

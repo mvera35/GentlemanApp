@@ -24,7 +24,7 @@ const Button = ({ title, action}) => {
 
 const Options = ({ history }) => {
   return (
-    <View style={{position: "absolute", zIndex: 1, width: "100%"}}>
+    <View style={{position: "absolute", zIndex: 2, width: "100%"}}>
       <Button
         title={"Inicio"}
         action={() => {

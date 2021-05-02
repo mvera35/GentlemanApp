@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Image } from "react-native";
 import { SearchBar } from "react-native-elements";
 
 const style = StyleSheet.create({
-  barContainer: { flex: 0.2, padding: 5 },
+  barContainer: { flex: 1, padding: 5, marginBottom: 20, position: "absolute", width: "100%"},
   inputStyle: { backgroundColor: "#f977bc", borderRadius: 100, color: "#000" },
   inputContainerStyle: {
     backgroundColor: "#f977bc",

@@ -28,6 +28,7 @@ const style = StyleSheet.create({
     color: "#fff",
     fontSize: 19,
   },
+  barContainer: { flex: 0.2, zIndex: 1 },
 });
 
 class ListVideo extends React.Component {
@@ -46,8 +47,8 @@ class ListVideo extends React.Component {
     }
   }
 
-  goToVideo(uri, width, height) {
-    this.props.history.push({
+  goToVideo(props, uri, width, height) {
+    props.history.push({
       pathname: "/VideoPlay",
       state: { uri, width, height },
     });
@@ -60,7 +61,11 @@ class ListVideo extends React.Component {
         {img.map((object, index) => {
           return (
             <View key={index} style={style.imageContainer}>
-              <TouchableOpacity>
+              <TouchableOpacity
+                onPress={() => {
+                  this.props.history.push({ pathname: "/VideoPlay" });
+                }}
+              >
                 <Image
                   style={{ width: 120, height: 90, alignSelf: "flex-start" }}
                   source={{ uri: object.uri }}
@@ -99,12 +104,20 @@ const BackButton = ({ history }) => {
   );
 };
 
+const Bar = ({ history }) => {
+  return (
+    <View style={[style.barContainer]}>
+      <SearchBar history={history} />
+    </View>
+  );
+};
+
 export default function VideoList(props) {
   //console.log(props.location.state);
   return (
     <View style={[style.container]}>
       <Header history={props.history} />
-      <SearchBar history={props.history} />
+      <Bar history={props.history} />
       <ListVideo history={props.history} />
       <BackButton history={props.history} />
     </View>
