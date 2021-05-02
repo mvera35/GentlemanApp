@@ -2,50 +2,64 @@ import React, { useState } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import Header from "../share/Header";
 import { Button } from "../share/Button";
-import { SearchBar } from "react-native-elements";
+import { Video } from "expo-av";
+import SearchBar from "../share/SearchBar.jsx";
 
 const style = StyleSheet.create({
-  container: { flex: 1, alignItems: "center", alignSelf: "stretch"},
-  title: { marginTop: "10%", color: "#fff", fontSize: 45, flex: 0.1 },
-  logo: { height: "22%", width: "85%", marginTop: "-5%", flex: 0.3 },
+  container: { flex: 1, alignItems: "stretch", backgroundColor: "#282828" },
+  titleContainer: { flex: 0.3, justifyContent: "center" },
+  title: {
+    marginTop: "10%",
+    color: "#fff",
+    fontSize: 45,
+    alignSelf: "center",
+  },
+  imageContainer: {
+    flex: 1.5,
+    borderWidth: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  image: {
+    width: "95%",
+    height: "75%",
+  },
+  textContainer: { flex: 1 },
   text: {
     color: "#fff",
     textAlign: "center",
-    fontSize: 14,
+    fontSize: 22,
     fontWeight: "bold",
-    flex: 0.1
   },
+  videoContainer: { flex: 1 },
+  buttonContainer: { flex: 0.3 },
 });
-
 export default function Community({ history }) {
-  const [search, setSearch] = useState("");
-
-  const updateSearch = (search) => {
-    setSearch(search);
-  };
-
   return (
     <View style={style.container}>
-        <Text style={style.title}>Videos</Text>
+      <Header history={history} />
+      <View style={[style.titleContainer, style.centerContain]}>
+        <Text style={[style.title]}>Videos</Text>
+      </View>
+      <SearchBar history={history}/>
+      <View style={[style.videoContainer]}>
+        <Text style={[style.text]}>Último Video</Text>
         <Image
-          source={require("../assets/GentlemanProgrammingLogo.png")}
-          style={style.logo}
+          style={{ width: 320, height: 180, alignSelf: "center" }}
+          source={{ uri: "https://reactnative.dev/img/tiny_logo.png" }}
         />
-        <SearchBar
-          placeholder="Buscar..."
-          onChangeText={updateSearch}
-          value={search}
-          inputContainerStyle={{flex: 1}}
-        />
+        <Text style={[style.text]}>Nombre del video</Text>
+      </View>
+      <View style={[style.buttonContainer]}>
         <Button
           color={"#c3458c"}
           text={"Regresar"}
           icon={"caret-back-circle-outline"}
           action={() => {
-            history.push("/");
+            history.goBack();
           }}
         />
-      <Header history={history} />
+      </View>
     </View>
   );
 }
