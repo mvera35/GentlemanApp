@@ -10,16 +10,16 @@ const style = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  titleContainer: { flex: 1},
-  title: { color: "#fff", fontSize: 45},
-  logoContainer: { flex: 1,  },
-  logo: { height: "100%", width: "70%", marginBottom: "15%"},
+  titleContainer: { flex: 1 },
+  title: { color: "#fff", fontSize: 45 },
+  logoContainer: { flex: 1 },
+  logo: { height: "100%", width: "70%", marginBottom: "15%" },
   textContainer: { flex: 1, padding: 10 },
   text: {
     color: "#fff",
     textAlign: "center",
-    fontSize: 14,
-    fontWeight: "bold",
+    fontSize: 18,
+    padding: 10,
   },
   buttonContainer: { flex: 2, marginTop: "5%" },
 });
@@ -39,16 +39,13 @@ export default function Community({ history }) {
       </View>
       <View style={[style.textContainer, style.centerContent]}>
         <Text style={style.text}>
-          {"Bienvenido a Gentleman Programming !!!\n\n"}
-          {
-            "La comunidad donde compartimos información gratuita y nos formamos los unos a los otros.\n\n"
-          }
-          {
-            "Primero lo primero... No tengas miedo de preguntar y sé la esponja de conocimiento que tienes que ser !!!!"
-          }
+          Bienvenido a Gentleman Programming !!!{"\n\n"}
+          La comunidad donde compartimos información gratuita y nos formamos los
+          unos a los otros. Primero lo primero... No tengas miedo de preguntar y
+          sé la esponja de conocimiento que tienes que ser !!!!
         </Text>
       </View>
-      <View style={[style.buttonContainer,style.centerContent]}>
+      <View style={[style.buttonContainer, style.centerContent]}>
         <Button
           color={"#f977bc"}
           text={"Conocimiento"}

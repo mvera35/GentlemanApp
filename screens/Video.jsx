@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import Header from "../share/Header";
 import { Button } from "../share/Button";
-import { Video } from "expo-av";
 import SearchBar from "../share/SearchBar.jsx";
 
 const style = StyleSheet.create({
@@ -59,7 +58,7 @@ export default function Community({ history }) {
           text={"Regresar"}
           icon={"caret-back-circle-outline"}
           action={() => {
-            history.goBack();
+            history.push("/");
           }}
         />
       </View>

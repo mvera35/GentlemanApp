@@ -1,22 +1,21 @@
 import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import Header from "../share/Header";
 import { Button } from "../share/Button";
 import { Icon } from "react-native-elements";
 
 const style = StyleSheet.create({
   text: {
-    fontSize: 14,
+    fontSize: 18,
     color: "white",
-    fontWeight: "bold",
-    textAlign: "center",
+    textAlign: "justify",
   },
   container: {
     flex: 1,
     alignItems: "center",
     backgroundColor: "#282828",
   },
-  textContainer: { flex: 0.4 },
+  textContainer: { flex: 0.5, padding: 10 },
   tableContainer: { flex: 2 },
   centerContain: {
     justifyContent: "center",
@@ -29,9 +28,14 @@ const style = StyleSheet.create({
 const CustomIcon = ({ name, color, size, text }) => {
   return (
     <View style={{ flex: 1, alignItems: "center" }}>
-      <View style={{ backgroundColor: "#fff", borderRadius: 30}}>
-        <Icon name={name} type="font-awesome-5" color={color} size={size} />
-      </View>
+      <Icon
+        name={name}
+        type="font-awesome-5"
+        color={color}
+        size={size}
+        backgroundColor="#fff"
+        borderRadius={10}
+      />
       <Text style={style.text}>{text}</Text>
     </View>
   );

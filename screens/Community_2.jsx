@@ -18,9 +18,9 @@ const style = StyleSheet.create({
   },
   text: {
     color: "#fff",
-    textAlign: "center",
-    fontSize: 14,
-    fontWeight: "bold",
+    textAlign: "justify",
+    fontSize: 18,
+    padding: 15
   },
   table: {
     flex: 0.1,
@@ -42,13 +42,13 @@ const style = StyleSheet.create({
   buttonContainer: { flex: 0.5 },
 });
 
-const Element = ({ color, name, text, action }) => {
+const Element = ({ color, name, text, action, iconColor }) => {
   return (
     <TouchableOpacity
       style={[style.element, { backgroundColor: color }]}
       onPress={action}
     >
-      <Icon name={name} type="font-awesome-5" size={50} />
+      <Icon name={name} type="font-awesome-5" size={50} color={iconColor} backgroundColor={"#fff"} borderRadius={10}/>
       <Text>{text}</Text>
     </TouchableOpacity>
   );
@@ -88,6 +88,7 @@ export default function Community({ history }) {
             name="discord"
             text="Discord"
             action={toggleOverlayDiscord}
+            iconColor="#7289da"
           />
           <Element
             color="#ffa9ee"

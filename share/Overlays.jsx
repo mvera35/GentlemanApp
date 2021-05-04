@@ -12,9 +12,10 @@ const style = StyleSheet.create({
   bacdropOverlay: { backgroundColor: "rgba(40,40,40,0.9)" },
   text: {
     color: "#fff",
-    textAlign: "center",
-    fontSize: 14,
+    textAlign: "justify",
+    fontSize: 18,
     fontWeight: "bold",
+    padding: 15
   },
 });
 
