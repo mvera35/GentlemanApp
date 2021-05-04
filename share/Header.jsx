@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { Header } from "react-native-elements";
 
-const Button = ({ title, action}) => {
+const Button = ({ title, action }) => {
   return (
     <Pressable
       style={({ pressed }) => [
@@ -24,15 +24,25 @@ const Button = ({ title, action}) => {
 
 const Options = ({ history }) => {
   return (
-    <View style={{position: "absolute", zIndex: 2, width: "100%"}}>
+    <View style={{ position: "absolute", zIndex: 2, width: "100%" }}>
       <Button
         title={"Inicio"}
         action={() => {
           history.push("/");
         }}
       />
-      <Button title={"Redes Sociales"} />
-      <Button title={"Acerca de la Aplicación"} />
+      <Button
+        title={"Redes Sociales"}
+        action={() => {
+          history.push("/Social");
+        }}
+      />
+      <Button
+        title={"Acerca de la Aplicación"}
+        action={() => {
+          history.push("/About");
+        }}
+      />
     </View>
   );
 };
@@ -56,7 +66,9 @@ export default class CustomHeader extends Component {
         />
 
         <View>
-          {this.state.expanded ? <Options history={this.props.history} /> : null}
+          {this.state.expanded ? (
+            <Options history={this.props.history} />
+          ) : null}
         </View>
       </View>
     );

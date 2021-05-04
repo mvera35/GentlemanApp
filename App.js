@@ -8,6 +8,8 @@ import Community_2 from "./screens/Community_2";
 import Video from "./screens/Video";
 import VideoList from "./screens/VideoList";
 import VideoPlay from "./screens/VideoPlay";
+import Social from "./screens/Social";
+import About from "./screens/About";
 
 export default class App extends React.Component {
   render() {
@@ -21,6 +23,8 @@ export default class App extends React.Component {
           <Route path="/Videos" component={Video} />
           <Route path="/VideoList" component={VideoList} />
           <Route path="/VideoPlay" component={VideoPlay} />
+          <Route path="/About" component={About} />
+          <Route path="/Social" component={Social} />
         </Switch>
       </NativeRouter>
     );
