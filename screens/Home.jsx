@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, View, Text, Image } from "react-native";
+import { StyleSheet, View, Text, Image, BackHandler } from "react-native";
 import Header from "../share/Header";
 import { Button } from "../share/Button";
 
@@ -19,7 +19,7 @@ const style = StyleSheet.create({
   },
   imageContainer: {
     flex: 2,
-    padding: 10
+    padding: 10,
   },
   buttonContainer: {
     flex: 2,
@@ -28,7 +28,7 @@ const style = StyleSheet.create({
     color: "#fff",
     fontSize: 45,
   },
-  image: { height: "60%", width: "90%", marginTop: "-30%"},
+  image: { height: "60%", width: "90%", marginTop: "-30%" },
 });
 export default function Home({ history }) {
   return (
@@ -44,27 +44,30 @@ export default function Home({ history }) {
         />
       </View>
       <View style={[style.buttonContainer, style.centerContent]}>
-          <Button
-            color={"#f977bc"}
-            text={"Comunidad"}
-            icon={"code-slash-sharp"}
-            action={() => {
-              history.push("/Community");
-            }}
-          />
-          <Button
-            color={"#f977bc"}
-            text={"Videos"}
-            icon={"videocam"}
-            action={() => {
-              history.push("/Videos");
-            }}
-          />
-          <Button
-            color={"#c3458c"}
-            text={"Salir"}
-            icon={"caret-back-circle-outline"}
-          />
+        <Button
+          color={"#f977bc"}
+          text={"Comunidad"}
+          icon={"code-slash-sharp"}
+          action={() => {
+            history.push("/Community");
+          }}
+        />
+        <Button
+          color={"#f977bc"}
+          text={"Videos"}
+          icon={"videocam"}
+          action={() => {
+            history.push("/Videos");
+          }}
+        />
+        <Button
+          color={"#c3458c"}
+          text={"Salir"}
+          icon={"caret-back-circle-outline"}
+          action={() => {
+            BackHandler.exitApp();
+          }}
+        />
       </View>
     </View>
   );

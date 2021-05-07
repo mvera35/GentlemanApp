@@ -3,7 +3,13 @@ import { StyleSheet, View, Text, Image } from "react-native";
 import { SearchBar } from "react-native-elements";
 
 const style = StyleSheet.create({
-  barContainer: { flex: 1, padding: 5, marginBottom: 20, position: "absolute", width: "100%"},
+  barContainer: {
+    flex: 1,
+    padding: 5,
+    marginBottom: 20,
+    position: "absolute",
+    width: "100%",
+  },
   inputStyle: { backgroundColor: "#f977bc", borderRadius: 100, color: "#000" },
   inputContainerStyle: {
     backgroundColor: "#f977bc",
@@ -47,10 +53,12 @@ export default class CustomSearchBar extends Component {
           onChangeText={this.updateSearch}
           value={search}
           onSubmitEditing={() => {
-            this.props.history.push({
-              pathname: "/VideoList",
-              state: { search: this.state.search },
-            });
+            if (this.state.search.trim() != "") {
+              this.props.history.push({
+                pathname: "/VideoList",
+                state: { search: this.state.search },
+              });
+            }
           }}
         />
       </View>

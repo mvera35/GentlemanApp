@@ -10,6 +10,7 @@ import {
 import Header from "../share/Header";
 import SearchBar from "../share/SearchBar.jsx";
 import { FAB, Icon } from "react-native-elements";
+import { searchVideo } from "../share/Youtube";
 
 const style = StyleSheet.create({
   container: { flex: 1, alignItems: "stretch", backgroundColor: "#282828" },
@@ -22,36 +23,36 @@ const style = StyleSheet.create({
     justifyContent: "center",
     borderRadius: 100,
   },
-  scrollView: { flex: 1, marginHorizontal: 20 },
-  imageContainer: { flexDirection: "row", marginBottom: 10 },
+  scrollView: { flex: 1, marginTop: 20  },
+  imageContainer: { marginBottom: 50, alignItems: "center" },
   text: {
     color: "#fff",
     fontSize: 19,
+    textAlign: "center",
   },
-  barContainer: { flex: 0.2, zIndex: 1 },
 });
 
 class ListVideo extends React.Component {
   constructor(props) {
     super(props);
     this.state = { images: [] };
-    this.makeCall();
   }
 
-  makeCall() {
-    for (let i = 0; i < 10; i++) {
-      this.state.images.push({
-        uri: "https://reactnative.dev/img/tiny_logo.png",
-        video: "http://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4",
-      });
-    }
-  }
-
-  goToVideo(props, uri, width, height) {
-    props.history.push({
-      pathname: "/VideoPlay",
-      state: { uri, width, height },
+  async componentDidMount() {
+    const videos = await searchVideo(this.props.search);
+    videos.forEach((video) => {
+      if (video.id.kind != "youtube#channel") {
+        this.state.images.push({
+          image: video.snippet.thumbnails.medium,
+          title: video.snippet.title,
+          date: video.snippet.publishedAt,
+          description: video.snippet.description,
+          id: video.id,
+          kind: video.id.kind,
+        });
+      }
     });
+    this.forceUpdate();
   }
 
   render() {
@@ -63,20 +64,33 @@ class ListVideo extends React.Component {
             <View key={index} style={style.imageContainer}>
               <TouchableOpacity
                 onPress={() => {
-                  this.props.history.push({ pathname: "/VideoPlay" });
+                  this.props.history.push({
+                    pathname: "/VideoPlay",
+                    state: {
+                      title: object.title,
+                      description: object.description,
+                      id: object.id,
+                      kind: object.kind,
+                    },
+                  });
                 }}
               >
                 <Image
-                  style={{ width: 120, height: 90, alignSelf: "flex-start" }}
-                  source={{ uri: object.uri }}
+                  style={{
+                    width: object.image.width,
+                    height: object.image.height,
+                    alignSelf: "flex-start",
+                    borderColor: "#c3458c",
+                    borderWidth: 2,
+                  }}
+                  source={{ uri: object.image.url }}
                 />
               </TouchableOpacity>
-              <View>
+              <View style={{ alignItems: "center" }}>
                 <Text style={[style.text, { fontWeight: "bold" }]}>
-                  Titulo del Video
+                  {object.title}
                 </Text>
-                <Text style={[style.text]}>Vistas: </Text>
-                <Text style={[style.text]}>Me gusta: </Text>
+                <Text style={[style.text]}>Fecha: {object.date} </Text>
               </View>
             </View>
           );
@@ -94,7 +108,7 @@ const BackButton = ({ history }) => {
       buttonStyle={style.buttonStyle}
       icon={
         <View style={style.iconView}>
-          <Icon name="arrow-undo-sharp" type="ionicon" size={50} />
+          <Icon name="arrow-undo-sharp" type="ionicon" size={50} color="#fff"/>
         </View>
       }
       onPress={() => {
@@ -104,21 +118,11 @@ const BackButton = ({ history }) => {
   );
 };
 
-const Bar = ({ history }) => {
-  return (
-    <View style={[style.barContainer]}>
-      <SearchBar history={history} />
-    </View>
-  );
-};
-
 export default function VideoList(props) {
-  //console.log(props.location.state);
   return (
     <View style={[style.container]}>
       <Header history={props.history} />
-      <Bar history={props.history} />
-      <ListVideo history={props.history} />
+      <ListVideo history={props.history} search={props.location.state.search} />
       <BackButton history={props.history} />
     </View>
   );

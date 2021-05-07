@@ -1,8 +1,9 @@
 import React from "react";
-import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
 import Header from "../share/Header";
 import { Icon } from "react-native-elements";
-import { Button }from "../share/Button";
+import { Button } from "../share/Button";
+import * as Linking from "expo-linking";
 
 const style = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#282828" },
@@ -39,14 +40,28 @@ const Element = ({
   backgroundColor,
   name,
   text,
-  action,
   iconColor,
   iconBackground,
+  url,
 }) => {
   return (
     <TouchableOpacity
       style={[style.element, { backgroundColor: backgroundColor }]}
-      onPress={action}
+      onPress={() => {
+        Alert.alert(
+          "Espera!!!",
+          `¿Seguro que te quieres redirigir a ${text}?`,
+          [
+            {
+              text: "Si",
+              onPress: () => {
+                Linking.openURL(url);
+              },
+            },
+            { text: "No", onPress: () => null, style: "cancel" },
+          ]
+        );
+      }}
     >
       <Icon
         name={name}
@@ -71,6 +86,7 @@ const SocialSection = () => {
           text="Discord"
           iconBackground="#fff"
           iconColor="#7289da"
+          url="https://discord.gg/8Wu7ZzGhgG"
         />
         <Element
           backgroundColor="#ffa9ee"
@@ -78,6 +94,7 @@ const SocialSection = () => {
           text="Youtube"
           iconBackground="#fff"
           iconColor="#ff0000"
+          url="https://www.youtube.com/channel/UCbx_d228PdYwgB4Jz202SIQ"
         />
       </View>
       <View style={[style.row]}>
@@ -87,6 +104,7 @@ const SocialSection = () => {
           text="Spotify"
           iconBackground="#000"
           iconColor="#1db954"
+          url={"https://open.spotify.com/show/4AhopzZexw2wOMJyIcBWlx?si=u-6eBPYgRSWM2y5wB2kU1A&nd=1"}
         />
         <Element
           backgroundColor="#f977bc"
@@ -94,6 +112,7 @@ const SocialSection = () => {
           text="Twitch"
           iconBackground="#fff"
           iconColor="#9147fe"
+          url="https://www.twitch.tv/applelan_92"
         />
       </View>
       <View style={[style.row]}>
@@ -103,6 +122,7 @@ const SocialSection = () => {
           text="Linkedin"
           iconBackground="#fff"
           iconColor="#0077b5"
+          url="https://www.linkedin.com/in/alanbuscaglia/"
         />
         <Element
           backgroundColor="#ffa9ee"
@@ -110,6 +130,7 @@ const SocialSection = () => {
           text="Twitter"
           iconBackground="#fff"
           iconColor="#08a0e9"
+          url="https://twitter.com/alan_buscaglia"
         />
       </View>
       <View style={[style.row]}>
@@ -119,6 +140,7 @@ const SocialSection = () => {
           text="Instagram"
           iconBackground="#fff"
           iconColor="#000"
+          url="https://www.instagram.com/alanbuscaglia"
         />
         <Element
           backgroundColor="#f977bc"
@@ -126,6 +148,7 @@ const SocialSection = () => {
           text="Medium"
           iconBackground="#fff"
           iconColor="#000"
+          url="https://gentlemanprogramming.medium.com/"
         />
       </View>
     </View>
