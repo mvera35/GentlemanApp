@@ -7,8 +7,9 @@ import { Icon } from "react-native-elements";
 const style = StyleSheet.create({
   text: {
     fontSize: 18,
-    color: "white",
+    color: "#fff",
     textAlign: "justify",
+    fontWeight: "bold"
   },
   container: {
     flex: 1,
@@ -86,7 +87,7 @@ export default function Screen({ history }) {
       <Table />
       <View style={[style.buttonContainer, style.centerContain]}>
         <Button
-          color={"#c3458c"}
+          color={"#3ec584"}
           text={"Regresar"}
           icon={"caret-back-circle-outline"}
           action={() => {

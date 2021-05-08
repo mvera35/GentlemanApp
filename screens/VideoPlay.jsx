@@ -53,7 +53,7 @@ const ButtonSection = ({ history }) => {
   return (
     <View style={[style.buttonContainer, style.box]}>
       <Button
-        color={"#c3458c"}
+        color={"#3ec584"}
         text={"Regresar"}
         icon={"caret-back-circle-outline"}
         action={() => {

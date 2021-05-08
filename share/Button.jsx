@@ -20,7 +20,7 @@ export const Button = ({ color, text, icon, action }) => {
     },
     appButtonText: {
       fontSize: 20,
-      color: "#000",
+      color: "#fff",
       fontWeight: "bold",
     },
   });
@@ -35,7 +35,7 @@ export const Button = ({ color, text, icon, action }) => {
             alignItems: "center",
           }}
         >
-          <Icon name={icon} type="ionicon" size={40} />
+          <Icon name={icon} type="ionicon" size={40} color="#fff" />
           <Text style={styles.appButtonText}>{text}</Text>
         </View>
       </TouchableOpacity>

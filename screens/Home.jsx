@@ -61,7 +61,7 @@ export default function Home({ history }) {
           }}
         />
         <Button
-          color={"#c3458c"}
+          color={"#3ec584"}
           text={"Salir"}
           icon={"caret-back-circle-outline"}
           action={() => {

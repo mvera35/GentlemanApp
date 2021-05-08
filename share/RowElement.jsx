@@ -4,7 +4,7 @@ import { Icon } from "react-native-elements";
 import * as Linking from "expo-linking";
 
 const style = StyleSheet.create({
-  tex: { color: "#fff", fontSize: 18, textAlign: "justify", padding: 14 },
+  tex: { color: "#fff", fontSize: 18, textAlign: "justify", fontWeight: "bold"},
   element: {
     flex: 1,
     borderWidth: 3,
@@ -49,7 +49,7 @@ export default Element = ({
         color={iconColor}
         borderRadius={5}
       />
-      <Text>{text}</Text>
+      <Text style={style.tex}>{text}</Text>
     </TouchableOpacity>
   );
 };

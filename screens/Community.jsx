@@ -39,10 +39,9 @@ export default function Community({ history }) {
       </View>
       <View style={[style.textContainer, style.centerContent]}>
         <Text style={style.text}>
-          Bienvenido a Gentleman Programming !!!{"\n\n"}
+          Bienvenido a Gentleman Programming !!!{"\n"}
           La comunidad donde compartimos información gratuita y nos formamos los
-          unos a los otros. Primero lo primero... No tengas miedo de preguntar y
-          sé la esponja de conocimiento que tienes que ser !!!!
+          unos a los otros.
         </Text>
       </View>
       <View style={[style.buttonContainer, style.centerContent]}>
@@ -63,7 +62,7 @@ export default function Community({ history }) {
           }}
         />
         <Button
-          color={"#c3458c"}
+          color={"#3ec584"}
           text={"Regresar"}
           icon={"caret-back-circle-outline"}
           action={() => {

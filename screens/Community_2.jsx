@@ -20,7 +20,6 @@ const style = StyleSheet.create({
     color: "#fff",
     textAlign: "justify",
     fontSize: 18,
-    padding: 15
   },
   table: {
     flex: 0.1,
@@ -49,7 +48,7 @@ const Element = ({ color, name, text, action, iconColor }) => {
       onPress={action}
     >
       <Icon name={name} type="font-awesome-5" size={50} color={iconColor} backgroundColor={"#fff"} borderRadius={10}/>
-      <Text>{text}</Text>
+      <Text style={[style.text, {fontWeight:"bold"}]}>{text}</Text>
     </TouchableOpacity>
   );
 };
@@ -76,7 +75,7 @@ export default function Community({ history }) {
     <View style={style.container}>
       <Header history={history} />
       <View style={[style.textContainer, style.centerContain]}>
-        <Text style={style.text}>
+        <Text style={[style.text, {padding: 15}]}>
           Todos son bienvenidos dentro de esta comunidad, dentro de la misma
           encontraras lo siguiente:
         </Text>
@@ -95,6 +94,7 @@ export default function Community({ history }) {
             name="microphone-alt"
             text="Podcast"
             action={toggleOverlayPodcast}
+            iconColor="#373e4a"
           />
         </View>
 
@@ -104,18 +104,20 @@ export default function Community({ history }) {
             name="chalkboard-teacher"
             text="Clases"
             action={toggleOverlayClass}
+            iconColor="#3ec584"
           />
           <Element
             color="#f977bc"
             name="user-friends"
             text="Entrevistas"
             action={toggleOverlayInterview}
+            iconColor="#dca85c"
           />
         </View>
       </View>
       <View style={[style.buttonContainer]}>
         <Button
-          color={"#c3458c"}
+          color={"#3ec584"}
           text={"Regresar"}
           icon={"caret-back-circle-outline"}
           action={() => {

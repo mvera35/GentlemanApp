@@ -88,5 +88,5 @@ const styles = StyleSheet.create({
     marginLeft: "10%",
     marginTop: "2.5%",
   },
-  buttonText: { fontSize: 18, paddingLeft: "2%" },
+  buttonText: { color: "#fff", fontSize: 18, paddingLeft: "2%", fontWeight: "bold" },
 });

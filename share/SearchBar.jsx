@@ -10,7 +10,7 @@ const style = StyleSheet.create({
     position: "absolute",
     width: "100%",
   },
-  inputStyle: { backgroundColor: "#f977bc", borderRadius: 100, color: "#000" },
+  inputStyle: { backgroundColor: "#f977bc", borderRadius: 100, color: "#fff" },
   inputContainerStyle: {
     backgroundColor: "#f977bc",
     borderRadius: 100,
@@ -24,12 +24,12 @@ const style = StyleSheet.create({
 
 const SearchBarProps = {
   placeholder: "Buscar...",
-  placeholderTextColor: "#000",
+  placeholderTextColor: "#fff",
   inputStyle: style.inputStyle,
   inputContainerStyle: style.inputContainerStyle,
   containerStyle: style.containerStyle,
   leftIconContainerStyle: style.leftIconContainerStyle,
-  searchIcon: { size: 30, color: "#000" },
+  searchIcon: { size: 30, color: "#fff" },
   clearIcon: null,
 };
 
