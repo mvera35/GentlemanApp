@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
 import { Icon } from "react-native-elements";
 
@@ -42,3 +42,4 @@ export const Button = ({ color, text, icon, action }) => {
     </View>
   );
 };
+

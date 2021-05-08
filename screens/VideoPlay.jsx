@@ -26,7 +26,6 @@ const Bar = ({ history }) => {
 };
 
 const VideoView = ({ state }) => {
-  console.log(state.id);
   return (
     <View style={[style.videoContainer, style.box]}>
       {state.kind == "youtube#video" ? (

@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
-import { Icon } from "react-native-elements";
 import Header from "../share/Header";
+import Element from "../share/RowElement";
 import { Button } from "../share/Button";
 
 const style = StyleSheet.create({
@@ -35,32 +35,6 @@ const TextSection = () => {
   );
 };
 
-const Element = ({
-  backgroundColor,
-  name,
-  text,
-  action,
-  iconColor,
-  iconBackground,
-}) => {
-  return (
-    <TouchableOpacity
-      style={[style.element, { backgroundColor: backgroundColor }]}
-      onPress={action}
-    >
-      <Icon
-        name={name}
-        type="font-awesome-5"
-        size={50}
-        backgroundColor={iconBackground}
-        color={iconColor}
-        borderRadius={5}
-      />
-      <Text>{text}</Text>
-    </TouchableOpacity>
-  );
-};
-
 const SocialSection = () => {
   return (
     <View style={[style.socialContainer]}>
@@ -75,6 +49,7 @@ const SocialSection = () => {
           text="Linkedin"
           iconBackground="#fff"
           iconColor="#0077b5"
+          url="https://www.linkedin.com/in/jes%C3%BAs-maximiliano-vera-vicente-48803b1b4/?trk=public-profile-join-page"
         />
         <Element
           backgroundColor="#ffa9ee"
@@ -82,6 +57,7 @@ const SocialSection = () => {
           text="Github"
           iconBackground="#fff"
           iconColor="#211f1f"
+          url="https://github.com/mvera35"
         />
       </View>
       <View style={[style.row]}>
@@ -91,6 +67,7 @@ const SocialSection = () => {
           text="Instagram"
           iconBackground="#fff"
           iconColor="#000"
+          url="https://www.instagram.com/jugguernaut3494/"
         />
         <Element
           backgroundColor="#f977bc"
@@ -98,6 +75,7 @@ const SocialSection = () => {
           text="Twitter"
           iconBackground="#fff"
           iconColor="#08a0e9"
+          url="https://twitter.com/Juggernaut34941"
         />
       </View>
     </View>

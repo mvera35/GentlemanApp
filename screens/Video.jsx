@@ -71,6 +71,9 @@ class LasVideoImage extends Component {
       height: image.height,
       title: item.snippet.title,
       url: image.url,
+      kind: item.id.kind,
+      id: item.id,
+      description: item.snippet.description,
     });
     this.forceUpdate();
   }
@@ -79,7 +82,19 @@ class LasVideoImage extends Component {
     return (
       <View style={[style.videoContainer]}>
         <Text style={[style.text]}>Último Video</Text>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            this.props.history.push({
+              pathname: "/VideoPlay",
+              state: {
+                id: this.state.id,
+                kind: this.state.kind,
+                title: this.state.title,
+                description: this.state.description,
+              },
+            });
+          }}
+        >
           <Image
             style={{
               width: this.state.width,
@@ -113,13 +128,13 @@ const BackButton = ({ history }) => {
     </View>
   );
 };
-// agregar el LasVideoImage antes del botón de back
 export default function Community({ history }) {
   return (
     <View style={style.container}>
       <Header history={history} />
       <Title />
       <BarSection history={history} />
+      <LasVideoImage history={history} />
       <BackButton history={history} />
     </View>
   );

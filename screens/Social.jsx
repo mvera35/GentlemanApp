@@ -1,9 +1,8 @@
 import React from "react";
-import { StyleSheet, View, Text, TouchableOpacity, Alert } from "react-native";
+import { StyleSheet, View, Text } from "react-native";
 import Header from "../share/Header";
-import { Icon } from "react-native-elements";
+import Element from "../share/RowElement";
 import { Button } from "../share/Button";
-import * as Linking from "expo-linking";
 
 const style = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#282828" },
@@ -36,46 +35,6 @@ const TextSection = () => {
   );
 };
 
-const Element = ({
-  backgroundColor,
-  name,
-  text,
-  iconColor,
-  iconBackground,
-  url,
-}) => {
-  return (
-    <TouchableOpacity
-      style={[style.element, { backgroundColor: backgroundColor }]}
-      onPress={() => {
-        Alert.alert(
-          "Espera!!!",
-          `¿Seguro que te quieres redirigir a ${text}?`,
-          [
-            {
-              text: "Si",
-              onPress: () => {
-                Linking.openURL(url);
-              },
-            },
-            { text: "No", onPress: () => null, style: "cancel" },
-          ]
-        );
-      }}
-    >
-      <Icon
-        name={name}
-        type="font-awesome-5"
-        size={50}
-        backgroundColor={iconBackground}
-        color={iconColor}
-        borderRadius={5}
-      />
-      <Text>{text}</Text>
-    </TouchableOpacity>
-  );
-};
-
 const SocialSection = () => {
   return (
     <View style={[style.socialContainer]}>
@@ -104,7 +63,9 @@ const SocialSection = () => {
           text="Spotify"
           iconBackground="#000"
           iconColor="#1db954"
-          url={"https://open.spotify.com/show/4AhopzZexw2wOMJyIcBWlx?si=u-6eBPYgRSWM2y5wB2kU1A&nd=1"}
+          url={
+            "https://open.spotify.com/show/4AhopzZexw2wOMJyIcBWlx?si=u-6eBPYgRSWM2y5wB2kU1A&nd=1"
+          }
         />
         <Element
           backgroundColor="#f977bc"

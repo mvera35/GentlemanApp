@@ -8,7 +8,6 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Header from "../share/Header";
-import SearchBar from "../share/SearchBar.jsx";
 import { FAB, Icon } from "react-native-elements";
 import { searchVideo } from "../share/Youtube";
 
@@ -80,7 +79,7 @@ class ListVideo extends React.Component {
                     width: object.image.width,
                     height: object.image.height,
                     alignSelf: "flex-start",
-                    borderColor: "#c3458c",
+                    borderColor: "#fff",
                     borderWidth: 2,
                   }}
                   source={{ uri: object.image.url }}
