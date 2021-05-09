@@ -23,9 +23,8 @@ export const getLastVideo = async () => {
 
 export const searchVideo = async (search) => {
   try {
-    console.log("Esto es de aca: " + search);
     const video = await youtubeAxios.get("/search", {
-      params: { maxResults: 15, q: search },
+      params: { maxResults: 25, q: search },
     });
     return video.data.items;
   } catch (e) {

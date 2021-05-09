@@ -3,17 +3,6 @@ import { StyleSheet, Text, TouchableOpacity, Alert } from "react-native";
 import { Icon } from "react-native-elements";
 import * as Linking from "expo-linking";
 
-const style = StyleSheet.create({
-  tex: { color: "#fff", fontSize: 18, textAlign: "justify", fontWeight: "bold"},
-  element: {
-    flex: 1,
-    borderWidth: 3,
-    borderColor: "#c3458c",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
-
 export default Element = ({
   backgroundColor,
   name,
@@ -53,3 +42,19 @@ export default Element = ({
     </TouchableOpacity>
   );
 };
+
+const style = StyleSheet.create({
+  tex: {
+    color: "#fff",
+    fontSize: 18,
+    textAlign: "justify",
+    fontWeight: "bold",
+  },
+  element: {
+    flex: 1,
+    borderWidth: 3,
+    borderColor: "#c3458c",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+});

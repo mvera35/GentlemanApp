@@ -1,40 +1,21 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import Header from "../share/Header";
-import { Button } from "../share/Button";
+import { BackButton } from "../share/Button";
 import SearchBar from "../share/SearchBar.jsx";
 import { getLastVideo } from "../share/Youtube";
 
-const style = StyleSheet.create({
-  container: { flex: 1, alignItems: "stretch", backgroundColor: "#282828" },
-  titleContainer: { flex: 0.3, justifyContent: "center" },
-  title: {
-    marginTop: "10%",
-    color: "#fff",
-    fontSize: 45,
-    alignSelf: "center",
-  },
-  imageContainer: {
-    flex: 1.5,
-    borderWidth: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  image: {
-    width: "95%",
-    height: "75%",
-  },
-  textContainer: { flex: 1 },
-  text: {
-    color: "#fff",
-    textAlign: "center",
-    fontSize: 22,
-    fontWeight: "bold",
-  },
-  videoContainer: { flex: 1 },
-  buttonContainer: { flex: 0.3 },
-  barContainer: { flex: 0.3, zIndex: 1 },
-});
+export default function Community({ history }) {
+  return (
+    <View style={style.container}>
+      <Header history={history} />
+      <Title />
+      <BarSection history={history} />
+      <LasVideoImage history={history} />
+      <ButtonSection history={history} />
+    </View>
+  );
+}
 
 const BarSection = ({ history }) => {
   return (
@@ -114,11 +95,10 @@ class LasVideoImage extends Component {
   }
 }
 
-const BackButton = ({ history }) => {
+const ButtonSection = ({ history }) => {
   return (
     <View style={[style.buttonContainer]}>
-      <Button
-        color={"#3ec584"}
+      <BackButton
         text={"Regresar"}
         icon={"caret-back-circle-outline"}
         action={() => {
@@ -128,14 +108,34 @@ const BackButton = ({ history }) => {
     </View>
   );
 };
-export default function Community({ history }) {
-  return (
-    <View style={style.container}>
-      <Header history={history} />
-      <Title />
-      <BarSection history={history} />
-      <LasVideoImage history={history} />
-      <BackButton history={history} />
-    </View>
-  );
-}
+
+const style = StyleSheet.create({
+  container: { flex: 1, alignItems: "stretch", backgroundColor: "#282828" },
+  titleContainer: { flex: 0.3, justifyContent: "center" },
+  title: {
+    marginTop: "10%",
+    color: "#fff",
+    fontSize: 45,
+    alignSelf: "center",
+  },
+  imageContainer: {
+    flex: 1.5,
+    borderWidth: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  image: {
+    width: "95%",
+    height: "75%",
+  },
+  textContainer: { flex: 1 },
+  text: {
+    color: "#fff",
+    textAlign: "center",
+    fontSize: 22,
+    fontWeight: "bold",
+  },
+  videoContainer: { flex: 1 },
+  buttonContainer: { flex: 0.3 },
+  barContainer: { flex: 0.3, zIndex: 1 },
+});

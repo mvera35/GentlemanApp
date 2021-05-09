@@ -2,23 +2,6 @@ import React from "react";
 import { Text, Image, StyleSheet } from "react-native";
 import { Overlay } from "react-native-elements";
 
-const style = StyleSheet.create({
-  overlay: {
-    elevation: 0,
-    shadowOpacity: 0,
-    alignItems: "center",
-    backgroundColor: "rgba(40,40,40,0.9)",
-  },
-  bacdropOverlay: { backgroundColor: "rgba(40,40,40,0.9)" },
-  text: {
-    color: "#fff",
-    textAlign: "justify",
-    fontSize: 18,
-    fontWeight: "bold",
-    padding: 15
-  },
-});
-
 export const OverlayDiscord = ({ visible, action }) => {
   return (
     <Overlay
@@ -100,3 +83,20 @@ export const OverlayInterview = ({ visible, action }) => {
     </Overlay>
   );
 };
+
+const style = StyleSheet.create({
+  overlay: {
+    elevation: 0,
+    shadowOpacity: 0,
+    alignItems: "center",
+    backgroundColor: "rgba(40,40,40,0.9)",
+  },
+  bacdropOverlay: { backgroundColor: "rgba(40,40,40,0.9)" },
+  text: {
+    color: "#fff",
+    textAlign: "justify",
+    fontSize: 18,
+    fontWeight: "bold",
+    padding: 15,
+  },
+});

@@ -2,37 +2,6 @@ import React, { useState, Component } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import { SearchBar } from "react-native-elements";
 
-const style = StyleSheet.create({
-  barContainer: {
-    flex: 1,
-    padding: 5,
-    marginBottom: 20,
-    position: "absolute",
-    width: "100%",
-  },
-  inputStyle: { backgroundColor: "#f977bc", borderRadius: 100, color: "#fff" },
-  inputContainerStyle: {
-    backgroundColor: "#f977bc",
-    borderRadius: 100,
-  },
-  containerStyle: { borderRadius: 100, backgroundColor: "#c3458c" },
-  leftIconContainerStyle: {
-    width: "14%",
-    marginLeft: "0%",
-  },
-});
-
-const SearchBarProps = {
-  placeholder: "Buscar...",
-  placeholderTextColor: "#fff",
-  inputStyle: style.inputStyle,
-  inputContainerStyle: style.inputContainerStyle,
-  containerStyle: style.containerStyle,
-  leftIconContainerStyle: style.leftIconContainerStyle,
-  searchIcon: { size: 30, color: "#fff" },
-  clearIcon: null,
-};
-
 export default class CustomSearchBar extends Component {
   constructor(props) {
     super(props);
@@ -65,3 +34,35 @@ export default class CustomSearchBar extends Component {
     );
   }
 }
+const style = StyleSheet.create({
+  barContainer: {
+    flex: 1,
+    padding: 5,
+    marginBottom: 20,
+    position: "absolute",
+    width: "100%",
+  },
+  inputStyle: { backgroundColor: "#f977bc", borderRadius: 100, color: "#fff" },
+  inputContainerStyle: {
+    backgroundColor: "#f977bc",
+    borderRadius: 100,
+  },
+  containerStyle: { borderRadius: 100, backgroundColor: "#c3458c" },
+  leftIconContainerStyle: {
+    width: "14%",
+    marginLeft: "0%",
+  },
+});
+
+const SearchBarProps = {
+  placeholder: "Buscar...",
+  placeholderTextColor: "#fff",
+  inputStyle: style.inputStyle,
+  inputContainerStyle: style.inputContainerStyle,
+  containerStyle: style.containerStyle,
+  leftIconContainerStyle: style.leftIconContainerStyle,
+  searchIcon: { size: 30, color: "#fff" },
+  clearIcon: null,
+};
+
+

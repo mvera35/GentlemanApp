@@ -8,28 +8,18 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Header from "../share/Header";
-import { FAB, Icon } from "react-native-elements";
 import { searchVideo } from "../share/Youtube";
+import {FloatButton} from "../share/Button";
 
-const style = StyleSheet.create({
-  container: { flex: 1, alignItems: "stretch", backgroundColor: "#282828" },
-  buttonStyle: {
-    borderRadius: 100,
-  },
-  iconView: {
-    height: "220%",
-    width: "220%",
-    justifyContent: "center",
-    borderRadius: 100,
-  },
-  scrollView: { flex: 1, marginTop: 20  },
-  imageContainer: { marginBottom: 50, alignItems: "center" },
-  text: {
-    color: "#fff",
-    fontSize: 19,
-    textAlign: "center",
-  },
-});
+export default function VideoList(props) {
+  return (
+    <View style={[style.container]}>
+      <Header history={props.history} />
+      <ListVideo history={props.history} search={props.location.state.search} />
+      <ButtonSection history={props.history} />
+    </View>
+  );
+}
 
 class ListVideo extends React.Component {
   constructor(props) {
@@ -54,6 +44,44 @@ class ListVideo extends React.Component {
     this.forceUpdate();
   }
 
+  VideoImage({ object, history }) {
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          history.push({
+            pathname: "/VideoPlay",
+            state: {
+              title: object.title,
+              description: object.description,
+              id: object.id,
+              kind: object.kind,
+            },
+          });
+        }}
+      >
+        <Image
+          style={{
+            width: object.image.width,
+            height: object.image.height,
+            alignSelf: "flex-start",
+            borderColor: "#fff",
+            borderWidth: 2,
+          }}
+          source={{ uri: object.image.url }}
+        />
+      </TouchableOpacity>
+    );
+  }
+
+  VideoText({ object }) {
+    return (
+      <View style={{ alignItems: "center" }}>
+        <Text style={[style.text, { fontWeight: "bold" }]}>{object.title}</Text>
+        <Text style={[style.text]}>Fecha: {object.date} </Text>
+      </View>
+    );
+  }
+
   render() {
     const img = this.state.images;
     return (
@@ -61,36 +89,8 @@ class ListVideo extends React.Component {
         {img.map((object, index) => {
           return (
             <View key={index} style={style.imageContainer}>
-              <TouchableOpacity
-                onPress={() => {
-                  this.props.history.push({
-                    pathname: "/VideoPlay",
-                    state: {
-                      title: object.title,
-                      description: object.description,
-                      id: object.id,
-                      kind: object.kind,
-                    },
-                  });
-                }}
-              >
-                <Image
-                  style={{
-                    width: object.image.width,
-                    height: object.image.height,
-                    alignSelf: "flex-start",
-                    borderColor: "#fff",
-                    borderWidth: 2,
-                  }}
-                  source={{ uri: object.image.url }}
-                />
-              </TouchableOpacity>
-              <View style={{ alignItems: "center" }}>
-                <Text style={[style.text, { fontWeight: "bold" }]}>
-                  {object.title}
-                </Text>
-                <Text style={[style.text]}>Fecha: {object.date} </Text>
-              </View>
+              <this.VideoImage object={object} history={this.props.history} />
+              <this.VideoText object={object} />
             </View>
           );
         })}
@@ -99,30 +99,33 @@ class ListVideo extends React.Component {
   }
 }
 
-const BackButton = ({ history }) => {
+const ButtonSection = ({ history }) => {
   return (
-    <FAB
-      color="#3ec584"
-      placement="left"
-      buttonStyle={style.buttonStyle}
-      icon={
-        <View style={style.iconView}>
-          <Icon name="arrow-undo-sharp" type="ionicon" size={50} color="#fff"/>
-        </View>
-      }
-      onPress={() => {
+    <FloatButton
+      style={style}
+      action={() => {
         history.push("/Videos");
       }}
     />
   );
 };
 
-export default function VideoList(props) {
-  return (
-    <View style={[style.container]}>
-      <Header history={props.history} />
-      <ListVideo history={props.history} search={props.location.state.search} />
-      <BackButton history={props.history} />
-    </View>
-  );
-}
+const style = StyleSheet.create({
+  container: { flex: 1, alignItems: "stretch", backgroundColor: "#282828" },
+  buttonStyle: {
+    borderRadius: 100,
+  },
+  iconView: {
+    height: "220%",
+    width: "220%",
+    justifyContent: "center",
+    borderRadius: 100,
+  },
+  scrollView: { flex: 1, marginTop: 20 },
+  imageContainer: { marginBottom: 50, alignItems: "center" },
+  text: {
+    color: "#fff",
+    fontSize: 19,
+    textAlign: "center",
+  },
+});

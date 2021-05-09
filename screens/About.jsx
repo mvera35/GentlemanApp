@@ -2,7 +2,7 @@ import React from "react";
 import { StyleSheet, View, Text, TouchableOpacity } from "react-native";
 import Header from "../share/Header";
 import Element from "../share/RowElement";
-import { Button } from "../share/Button";
+import { BackButton } from "../share/Button";
 
 const style = StyleSheet.create({
   container: { flex: 1, backgroundColor: "#282828" },
@@ -85,8 +85,7 @@ const SocialSection = () => {
 const ButtonSection = ({ history }) => {
   return (
     <View style={[style.buttonContainer]}>
-      <Button
-        color={"#3ec584"}
+      <BackButton
         text={"Regresar"}
         icon={"caret-back-circle-outline"}
         action={() => {

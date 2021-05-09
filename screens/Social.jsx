@@ -2,27 +2,18 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import Header from "../share/Header";
 import Element from "../share/RowElement";
-import { Button } from "../share/Button";
+import { BackButton } from "../share/Button";
 
-const style = StyleSheet.create({
-  container: { flex: 1, backgroundColor: "#282828" },
-  textContainer: { flex: 1, justifyContent: "center" },
-  socialContainer: { flex: 4, alignItems: "center", padding: 20 },
-  buttonContainer: { flex: 1 },
-  tex: { color: "#fff", fontSize: 18, textAlign: "justify", padding: 14 },
-  row: {
-    flex: 1,
-    flexDirection: "row",
-  },
-  element: {
-    flex: 1,
-    borderWidth: 3,
-    borderColor: "#c3458c",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  box: { borderColor: "#fff", borderWidth: 1 },
-});
+export default function Screen({ history }) {
+  return (
+    <View style={[style.container]}>
+      <Header history={history} />
+      <TextSection />
+      <SocialSection />
+      <ButtonSection history={history} />
+    </View>
+  );
+}
 
 const TextSection = () => {
   return (
@@ -119,7 +110,7 @@ const SocialSection = () => {
 const ButtonSection = ({ history }) => {
   return (
     <View style={[style.buttonContainer]}>
-      <Button
+      <BackButton
         color={"#3ec584"}
         text={"Regresar"}
         icon={"caret-back-circle-outline"}
@@ -131,13 +122,22 @@ const ButtonSection = ({ history }) => {
   );
 };
 
-export default function Screen({ history }) {
-  return (
-    <View style={[style.container]}>
-      <Header history={history} />
-      <TextSection />
-      <SocialSection />
-      <ButtonSection history={history} />
-    </View>
-  );
-}
+const style = StyleSheet.create({
+  container: { flex: 1, backgroundColor: "#282828" },
+  textContainer: { flex: 1, justifyContent: "center" },
+  socialContainer: { flex: 4, alignItems: "center", padding: 20 },
+  buttonContainer: { flex: 1 },
+  tex: { color: "#fff", fontSize: 18, textAlign: "justify", padding: 14 },
+  row: {
+    flex: 1,
+    flexDirection: "row",
+  },
+  element: {
+    flex: 1,
+    borderWidth: 3,
+    borderColor: "#c3458c",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  box: { borderColor: "#fff", borderWidth: 1 },
+});

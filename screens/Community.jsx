@@ -1,7 +1,78 @@
 import React from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import Header from "../share/Header";
-import { Button } from "../share/Button";
+import { BackButton, OptionButton } from "../share/Button";
+
+export default function Community({ history }) {
+  return (
+    <View style={style.container}>
+      <Header history={history} />
+      <TitleSection />
+      <ImageSection />
+      <TextSection />
+      <ButtonSection history={history} />
+    </View>
+  );
+}
+
+const TitleSection = () => {
+  return (
+    <View style={[style.titleContainer, style.centerContent]}>
+      <Text style={style.title}>Comunidad</Text>
+    </View>
+  );
+};
+
+const ImageSection = () => {
+  return (
+    <View style={[style.titleContainer, style.centerContent]}>
+      <Image
+        source={require("../assets/GentlemanProgrammingLogo.png")}
+        style={style.logo}
+      />
+    </View>
+  );
+};
+
+const TextSection = () => {
+  return (
+    <View style={[style.textContainer, style.centerContent]}>
+      <Text style={style.text}>
+        Bienvenido a Gentleman Programming !!!{"\n"}
+        La comunidad donde compartimos información gratuita y nos formamos los
+        unos a los otros.
+      </Text>
+    </View>
+  );
+};
+
+const ButtonSection = ({ history }) => {
+  return (
+    <View style={[style.buttonContainer, style.centerContent]}>
+      <OptionButton
+        text={"Conocimiento"}
+        icon={"terminal-outline"}
+        action={() => {
+          history.push("/CommunityS1");
+        }}
+      />
+      <OptionButton
+        text={"Información"}
+        icon={"reader-outline"}
+        action={() => {
+          history.push("/CommunityS2");
+        }}
+      />
+      <BackButton
+        text={"Regresar"}
+        icon={"caret-back-circle-outline"}
+        action={() => {
+          history.push("/");
+        }}
+      />
+    </View>
+  );
+};
 
 const style = StyleSheet.create({
   container: { flex: 1, alignItems: "center", backgroundColor: "#282828" },
@@ -24,52 +95,3 @@ const style = StyleSheet.create({
   buttonContainer: { flex: 2, marginTop: "5%" },
 });
 
-export default function Community({ history }) {
-  return (
-    <View style={style.container}>
-      <Header history={history} />
-      <View style={[style.titleContainer, style.centerContent]}>
-        <Text style={style.title}>Comunidad</Text>
-      </View>
-      <View style={[style.titleContainer, style.centerContent]}>
-        <Image
-          source={require("../assets/GentlemanProgrammingLogo.png")}
-          style={style.logo}
-        />
-      </View>
-      <View style={[style.textContainer, style.centerContent]}>
-        <Text style={style.text}>
-          Bienvenido a Gentleman Programming !!!{"\n"}
-          La comunidad donde compartimos información gratuita y nos formamos los
-          unos a los otros.
-        </Text>
-      </View>
-      <View style={[style.buttonContainer, style.centerContent]}>
-        <Button
-          color={"#f977bc"}
-          text={"Conocimiento"}
-          icon={"terminal-outline"}
-          action={() => {
-            history.push("/CommunityS1");
-          }}
-        />
-        <Button
-          color={"#f977bc"}
-          text={"Información"}
-          icon={"reader-outline"}
-          action={() => {
-            history.push("/CommunityS2");
-          }}
-        />
-        <Button
-          color={"#3ec584"}
-          text={"Regresar"}
-          icon={"caret-back-circle-outline"}
-          action={() => {
-            history.push("/");
-          }}
-        />
-      </View>
-    </View>
-  );
-}

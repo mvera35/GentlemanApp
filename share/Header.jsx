@@ -2,6 +2,38 @@ import React, { Component } from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { Header } from "react-native-elements";
 
+export default class CustomHeader extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { expanded: false };
+  }
+  render() {
+    return (
+      <View style={{ position: "relative" }}>
+        <Header
+          rightComponent={{
+            icon: "menu",
+            color: "#000",
+            onPress: this.iconAction,
+          }}
+          backgroundColor={"#ea1789"}
+          statusBarProps={{ backgroundColor: "#b2005c" }}
+        />
+
+        <View>
+          {this.state.expanded ? (
+            <Options history={this.props.history} />
+          ) : null}
+        </View>
+      </View>
+    );
+  }
+
+  iconAction = () => {
+    this.setState({ expanded: !this.state.expanded });
+  };
+}
+
 const Button = ({ title, action }) => {
   return (
     <Pressable
@@ -47,37 +79,6 @@ const Options = ({ history }) => {
   );
 };
 
-export default class CustomHeader extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { expanded: false };
-  }
-  render() {
-    return (
-      <View style={{ position: "relative" }}>
-        <Header
-          rightComponent={{
-            icon: "menu",
-            color: "#000",
-            onPress: this.iconAction,
-          }}
-          backgroundColor={"#ea1789"}
-          statusBarProps={{ backgroundColor: "#b2005c" }}
-        />
-
-        <View>
-          {this.state.expanded ? (
-            <Options history={this.props.history} />
-          ) : null}
-        </View>
-      </View>
-    );
-  }
-
-  iconAction = () => {
-    this.setState({ expanded: !this.state.expanded });
-  };
-}
 
 const styles = StyleSheet.create({
   buttonCircle: {

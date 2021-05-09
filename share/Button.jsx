@@ -1,6 +1,6 @@
 import React from "react";
 import { View, StyleSheet, TouchableOpacity, Text } from "react-native";
-import { Icon } from "react-native-elements";
+import { Icon, FAB } from "react-native-elements";
 
 export const Button = ({ color, text, icon, action }) => {
   const styles = StyleSheet.create({
@@ -42,4 +42,28 @@ export const Button = ({ color, text, icon, action }) => {
     </View>
   );
 };
+export const OptionButton = ({ text, icon, action }) => {
+  return <Button color={"#f977bc"} text={text} icon={icon} action={action} />;
+};
 
+const color = "#a9adb4";
+
+export const BackButton = ({ text, icon, action }) => {
+  return <Button color={color} text={text} icon={icon} action={action} />;
+};
+
+export const FloatButton = ({ action, style }) => {
+  return (
+    <FAB
+      color={color}
+      placement="left"
+      buttonStyle={style.buttonStyle}
+      icon={
+        <View style={style.iconView}>
+          <Icon name="arrow-undo-sharp" type="ionicon" size={50} color="#fff" />
+        </View>
+      }
+      onPress={action}
+    />
+  );
+};
